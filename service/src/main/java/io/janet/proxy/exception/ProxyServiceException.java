@@ -1,6 +1,7 @@
-package io.techery.janet.proxy.exception;
+package io.janet.proxy.exception;
 
-import io.techery.janet.JanetException;
+
+import io.janet.JanetException;
 
 public class ProxyServiceException extends JanetException {
 

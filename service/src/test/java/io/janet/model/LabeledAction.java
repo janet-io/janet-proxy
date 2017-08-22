@@ -1,4 +1,4 @@
-package io.techery.janet.proxy.sample.actions.base;
+package io.janet.model;
 
 public interface LabeledAction {
   String label();

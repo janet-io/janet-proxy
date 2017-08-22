@@ -1,4 +1,4 @@
-package io.techery.janet.model;
+package io.janet.model;
 
 @MockServiceAction
 public class MockTestAction3 implements LabeledAction {

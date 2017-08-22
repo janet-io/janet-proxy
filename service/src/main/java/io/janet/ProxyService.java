@@ -1,9 +1,9 @@
-package io.techery.janet;
+package io.janet;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import io.techery.janet.proxy.ServiceMappingRule;
+import io.janet.proxy.ServiceMappingRule;
 
 final public class ProxyService extends ActionService {
 

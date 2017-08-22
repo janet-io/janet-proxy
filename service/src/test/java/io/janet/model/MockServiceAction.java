@@ -1,4 +1,4 @@
-package io.techery.janet.model;
+package io.janet.model;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

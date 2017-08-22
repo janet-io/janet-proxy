@@ -1,4 +1,4 @@
-package io.techery.janet.model;
+package io.janet.model;
 
 @OtherServiceAction
 public class OtherTestAction implements LabeledAction {

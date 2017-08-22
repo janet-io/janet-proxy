@@ -1,10 +1,11 @@
-package io.techery.janet;
+package io.janet;
 
 import org.junit.Assert;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import rx.observers.TestSubscriber;
+
+import io.reactivex.subscribers.TestSubscriber;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
@@ -16,26 +17,27 @@ public final class AssertUtil {
   public static <T> void assertSubscriberWithSingleValue(TestSubscriber<T> subscriber) {
     subscriber.assertNoErrors();
     subscriber.assertValueCount(1);
-    subscriber.assertUnsubscribed();
+    Assert.assertTrue(subscriber.isDisposed());
   }
 
   public static <T> void assertSubscriberWithoutValues(TestSubscriber<T> subscriber) {
     subscriber.assertNoErrors();
     subscriber.assertNoValues();
-    subscriber.assertUnsubscribed();
+    Assert.assertTrue(subscriber.isDisposed());
   }
 
   public static <T> void assertCanceled(TestSubscriber<ActionState<T>> subscriber) {
     subscriber.assertNoErrors();
-    subscriber.assertUnsubscribed();
+    Assert.assertTrue(subscriber.isDisposed());
     AssertUtil.assertStatusCount(subscriber, ActionState.Status.START, 1);
     AssertUtil.assertStatusCount(subscriber, ActionState.Status.FAIL, 1);
-    Assert.assertThat(subscriber.getOnNextEvents().get(1).exception, instanceOf(CancelException.class));
+    JanetException exception = subscriber.values().get(subscriber.values().size() - 1).exception;
+    Assert.assertThat(exception, instanceOf(CancelException.class));
   }
 
   public static <T> void assertStatusCount(TestSubscriber<ActionState<T>> subscriber, ActionState.Status status, int count) {
     int i = 0;
-    for (ActionState state : subscriber.getOnNextEvents()) {
+    for (ActionState state : subscriber.values()) {
       if (status == state.status) {
         i++;
       }

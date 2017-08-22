@@ -1,10 +1,10 @@
-package io.techery.janet.proxy.sample.actions;
+package io.janet.proxy.sample.actions;
 
 import java.util.ArrayList;
 
-import io.techery.janet.http.annotations.HttpAction;
-import io.techery.janet.http.annotations.Response;
-import io.techery.janet.proxy.sample.actions.base.LabeledAction;
+import io.janet.http.annotations.HttpAction;
+import io.janet.http.annotations.Response;
+import io.janet.proxy.sample.actions.base.LabeledAction;
 
 @HttpAction("/users/techery/repos")
 public class GithubAction implements LabeledAction {
